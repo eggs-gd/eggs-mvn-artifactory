@@ -163,6 +163,21 @@
 
     <build>
         <finalName>${project.name}</finalName>
+		<sourceDirectory>src/</sourceDirectory>
+        <testSourceDirectory>test/</testSourceDirectory>
+        <testResources>
+            <testResource>
+                <directory>resources/test</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+        <resources>
+            <resource>
+                <directory>resources/main</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+		
         <plugins>
             <plugin>
                 <groupId>org.sonatype.flexmojos</groupId>
