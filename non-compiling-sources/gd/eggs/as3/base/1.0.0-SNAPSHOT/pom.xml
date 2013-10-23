@@ -14,7 +14,7 @@
         <flex.version>4.6.b.23201</flex.version>
         <flashplayer.version>11.1</flashplayer.version>
         <!--maven variable which points to your local repository -->
-        <internal.repo.path>file://d/prj/eggs/eggs-mvn-artifactory/</internal.repo.path>
+        <internal.repo.path>file://d/prj/eggs/eggs-mvn-artifactory/mvn-repo/</internal.repo.path>
     </properties>
 
     <profiles>
@@ -120,7 +120,7 @@
         <repository>
             <id>github.repo.release</id>
             <name>Internal Repository</name>
-            <url>https://github.com/eggs-gd/eggs-mvn-artifactory/release</url>
+            <url>https://github.com/eggs-gd/eggs-mvn-artifactory/mvn-repo/release</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -131,7 +131,7 @@
         <repository>
             <id>github.repo.snapshot</id>
             <name>Internal Repository</name>
-            <url>https://github.com/eggs-gd/eggs-mvn-artifactory/snapshot</url>
+            <url>https://github.com/eggs-gd/eggs-mvn-artifactory/mvn-repo/snapshot</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
