@@ -38,6 +38,17 @@
                 <compile.debug>true</compile.debug>
             </properties>
         </profile>
+        <profile>
+            <id>strict</id>
+            <activation>
+                <property>
+                    <name>strict</name>
+                </property>
+            </activation>
+            <properties>
+                <compile.strict>true</compile.strict>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
@@ -101,17 +112,16 @@
             <scope>test</scope>
         </dependency>-->
         <!--<dependency>
-            <groupId>org.mockolate</groupId>
-            <artifactId>mockolate</artifactId>
+            <groupId>com.adobe.mockolate</groupId>
+            <artifactId>mockolate-as3</artifactId>
             <version>0.12.4</version>
-            <classifier>as3</classifier>
             <type>swc</type>
             <scope>test</scope>
         </dependency>-->
-
     </dependencies>
 
     <repositories>
+        <!-- 3-d party -->
         <repository>
             <id>flex-mojos-repository</id>
             <name>flex-mojos-repository</name>
@@ -122,6 +132,8 @@
             <name>oss.sonatype.org</name>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
+
+        <!-- our -->
         <repository>
             <id>github.repo.release</id>
             <name>Internal Repository</name>
@@ -192,6 +204,7 @@
 
                 <configuration>
                     <storepass/>
+                    <strict>${compile.strict}</strict>
 					<sourceFile>${documentClass}</sourceFile>
                     <targetPlayer>${flashplayer.version}</targetPlayer>
                     <debug>${compile.debug}</debug>
