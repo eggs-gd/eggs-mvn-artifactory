@@ -223,6 +223,15 @@
                     </compilerWarnings>
                 </configuration>
 
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>asdoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
                 <dependencies>
                     <dependency>
                         <groupId>com.adobe.flex</groupId>
