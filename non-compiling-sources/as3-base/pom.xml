@@ -120,16 +120,6 @@
         </dependency>-->
     </dependencies>
 
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>com.adobe.ac</groupId>
-                <artifactId>flex-pmd-maven-plugin</artifactId>
-                <version>1.0.RC3</version>
-            </plugin>
-        </plugins>
-    </reporting>
-
     <repositories>
         <!-- 3-d party -->
         <repository>
@@ -148,23 +138,15 @@
             <id>github.repo.release</id>
             <name>Internal Repository</name>
             <url>https://github.com/eggs-gd/eggs-mvn-artifactory/mvn-repo/release</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
         </repository>
         <repository>
             <id>github.repo.snapshot</id>
             <name>Internal Repository</name>
             <url>https://github.com/eggs-gd/eggs-mvn-artifactory/mvn-repo/snapshot</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
         </repository>
     </repositories>
 
@@ -174,9 +156,18 @@
             <url>http://repository.sonatype.org/content/groups/flexgroup</url>
         </pluginRepository>
         <pluginRepository>
-            <id>FlexPMD repository on opensource.adobe.com</id>
-            <name>FlexPMD repository on opensource.adobe.com</name>
+            <id>FlexPMD repository on opensource.adobe.com release</id>
+            <name>FlexPMD repository on opensource.adobe.com release</name>
             <url>http://opensource.adobe.com/svn/opensource/flexpmd/maven-repository/release/</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>FlexPMD repository on opensource.adobe.com snapshot</id>
+            <name>FlexPMD repository on opensource.adobe.com snapshot</name>
+            <url>http://opensource.adobe.com/svn/opensource/flexpmd/maven-repository/snapshot/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
         </pluginRepository>
     </pluginRepositories>
 
@@ -202,12 +193,14 @@
         <finalName>${project.name}</finalName>
 		<sourceDirectory>src/</sourceDirectory>
         <testSourceDirectory>test/</testSourceDirectory>
+
         <testResources>
             <testResource>
                 <directory>resources/test</directory>
                 <filtering>true</filtering>
             </testResource>
         </testResources>
+
         <resources>
             <resource>
                 <directory>resources/main</directory>
@@ -242,7 +235,6 @@
                         <warn-no-constructor>false</warn-no-constructor>
                     </compilerWarnings>
                 </configuration>
-
                 <executions>
                     <execution>
                         <phase>site</phase>
@@ -251,7 +243,6 @@
                         </goals>
                     </execution>
                 </executions>
-
                 <dependencies>
                     <dependency>
                         <groupId>com.adobe.flex</groupId>
@@ -260,6 +251,24 @@
                         <type>pom</type>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>2.0.1</version>
+            </plugin>
+            <plugin>
+                <groupId>com.adobe.ac</groupId>
+                <artifactId>flex-pmd-maven-plugin</artifactId>
+                <version>1.2-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
