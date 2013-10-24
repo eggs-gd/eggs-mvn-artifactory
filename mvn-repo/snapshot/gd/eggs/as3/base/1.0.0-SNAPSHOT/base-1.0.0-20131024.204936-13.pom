@@ -14,7 +14,7 @@
         <flex.version>4.6.b.23201</flex.version>
         <flashplayer.version>11.1</flashplayer.version>
         <!--maven variable which points to your local repository -->
-        <internal.repo.path>file://d/prj/eggs/eggs-mvn-artifactory/mvn-repo/</internal.repo.path>
+        <internal.repo.path>file://d/prj/eggs/eggs-mvn-artifactory/mvn-repo</internal.repo.path>
     </properties>
 
     <profiles>
@@ -235,14 +235,6 @@
                         <warn-no-constructor>false</warn-no-constructor>
                     </compilerWarnings>
                 </configuration>
-                <executions>
-                    <execution>
-                        <phase>site</phase>
-                        <goals>
-                            <goal>asdoc</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <dependencies>
                     <dependency>
                         <groupId>com.adobe.flex</groupId>
@@ -257,20 +249,38 @@
                 <artifactId>maven-site-plugin</artifactId>
                 <version>2.0.1</version>
             </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.flexmojos</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+                <version>${flexmojos.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <id>flex-reports</id>
+                        <reports>
+                            <report>asdoc-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
             <plugin>
                 <groupId>com.adobe.ac</groupId>
                 <artifactId>flex-pmd-maven-plugin</artifactId>
                 <version>1.2-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <phase>site</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <reportSets>
+                    <reportSet>
+                        <id>pmd-reports</id>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
         </plugins>
-    </build>
+    </reporting>
 
 </project>
