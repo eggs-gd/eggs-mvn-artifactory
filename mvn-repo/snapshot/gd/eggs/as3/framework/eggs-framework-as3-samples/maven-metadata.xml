@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-  <groupId>gd.eggs.as3</groupId>
-  <artifactId>eggs-framework-as3</artifactId>
+  <groupId>gd.eggs.as3.framework</groupId>
+  <artifactId>eggs-framework-as3-samples</artifactId>
   <versioning>
     <versions>
       <version>1.0.0-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20131024142500</lastUpdated>
+    <lastUpdated>20131024142508</lastUpdated>
   </versioning>
 </metadata>
