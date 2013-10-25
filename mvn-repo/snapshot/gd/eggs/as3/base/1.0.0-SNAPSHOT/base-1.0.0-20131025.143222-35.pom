@@ -1,6 +1,7 @@
 ﻿<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>gd.eggs.as3</groupId>
@@ -263,6 +264,8 @@
                     <sourceFile>${documentClass}</sourceFile>
                     <targetPlayer>${flashplayer.version}</targetPlayer>
                     <debug>${compile.debug}</debug>
+	                <coverageOutputDirectory>${basedir}/target/site/</coverageOutputDirectory>
+	                <coverage>true</coverage>
                     <defines>
                         <property>
                             <name>CONFIG::debug</name>
@@ -277,6 +280,22 @@
                         <warn-no-constructor>false</warn-no-constructor>
                     </compilerWarnings>
                 </configuration>
+	            <executions>
+		            <execution>
+			            <id>asdoc-report</id>
+			            <phase>pre-site</phase>
+			            <goals>
+				            <goal>asdoc-report</goal>
+			            </goals>
+		            </execution>
+		            <execution>
+			            <id>coverage-report</id>
+			            <phase>pre-site</phase>
+			            <goals>
+				            <goal>coverage-report</goal>
+			            </goals>
+		            </execution>
+	            </executions>
                 <dependencies>
                     <dependency>
                         <groupId>com.adobe.flex</groupId>
@@ -291,6 +310,9 @@
                 <groupId>com.adobe.ac</groupId>
                 <artifactId>flex-pmd-maven-plugin</artifactId>
                 <version>1.2</version>
+	            <configuration>
+		            <outputDirectory>${basedir}/target/site/pmd/</outputDirectory>
+	            </configuration>
                 <executions>
                     <execution>
                         <phase>pre-site</phase>
@@ -301,35 +323,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.3</version>
-            </plugin>-->
         </plugins>
     </build>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.sonatype.flexmojos</groupId>
-                <artifactId>flexmojos-maven-plugin</artifactId>
-                <version>${flexmojos.version}</version>
-                <reportSets>
-                    <reportSet>
-                        <id>asdoc-report</id>
-                        <reports>
-                            <report>asdoc-report</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-            <!--<plugin>
-                <groupId>com.adobe.ac</groupId>
-                <artifactId>flex-pmd-maven-plugin</artifactId>
-                <version>1.2</version>
-            </plugin>-->
-        </plugins>
-    </reporting>
 
 </project>
