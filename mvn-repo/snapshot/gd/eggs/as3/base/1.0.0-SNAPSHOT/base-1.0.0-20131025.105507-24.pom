@@ -9,7 +9,31 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+	<inceptionYear>2013</inceptionYear>
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+	</licenses>
+	<organization>
+        <name>earwiGGames</name>
+        <url>http://eggs.gd</url>
+	</organization>
+	<developers>
+        <developer>
+            <name>Dukobpa3</name>
+        </developer>
+	</developers>
+	<contributors>
+        <contributor>
+            <name>SlavaRa</name>
+        </contributor>
+	</contributors>
+	
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <flexmojos.version>4.2-beta</flexmojos.version>
         <flex.version>4.6.b.23201</flex.version>
         <flashplayer.version>11.1</flashplayer.version>
@@ -202,6 +226,31 @@
         </resources>
 
         <plugins>
+	        <plugin>
+		        <groupId>com.mycila.maven-license-plugin</groupId>
+		        <artifactId>maven-license-plugin</artifactId>
+		        <version>1.9.0</version>
+		        <configuration>
+			        <header>${basedir}/LICENSE.txt</header>
+			        <failIfMissing>true</failIfMissing>
+			        <strictCheck>true</strictCheck>
+			        <aggregate>true</aggregate>
+			        <includes>
+				        <include>src/main/as3/**</include>
+				        <include>src/test/as3/**</include>
+			        </includes>
+		        </configuration>
+		        <executions>
+			        <execution>
+				        <id>license-update</id>
+				        <phase>validate</phase>
+				        <goals>
+					        <goal>format</goal>
+				        </goals>
+			        </execution>
+		        </executions>
+	        </plugin>
+
             <plugin>
                 <groupId>org.sonatype.flexmojos</groupId>
                 <artifactId>flexmojos-maven-plugin</artifactId>
@@ -237,6 +286,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
             <plugin>
                 <groupId>com.adobe.ac</groupId>
                 <artifactId>flex-pmd-maven-plugin</artifactId>
