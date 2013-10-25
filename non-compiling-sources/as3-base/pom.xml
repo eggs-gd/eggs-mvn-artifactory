@@ -184,19 +184,19 @@
 
     <build>
         <finalName>${project.name}</finalName>
-        <sourceDirectory>src/</sourceDirectory>
-        <testSourceDirectory>test/</testSourceDirectory>
+        <sourceDirectory>src/main/as3/</sourceDirectory>
+        <testSourceDirectory>src/test/as3/</testSourceDirectory>
 
         <testResources>
             <testResource>
-                <directory>resources/test</directory>
+                <directory>src/test/resources/</directory>
                 <filtering>true</filtering>
             </testResource>
         </testResources>
 
         <resources>
             <resource>
-                <directory>resources/main</directory>
+                <directory>src/main/resources/</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
