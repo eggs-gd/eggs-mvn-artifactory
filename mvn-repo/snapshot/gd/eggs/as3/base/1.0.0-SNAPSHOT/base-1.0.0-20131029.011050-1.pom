@@ -130,9 +130,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.hamcrest</groupId>
+            <groupId>hamcrest-as3</groupId>
             <artifactId>hamcrest-as3</artifactId>
-            <version>1.2.0</version>
+            <version>1.1.0</version>
             <type>swc</type>
             <scope>test</scope>
         </dependency>
@@ -151,6 +151,11 @@
             <id>flex-mojos-repository</id>
             <name>flex-mojos-repository</name>
             <url>http://repository.sonatype.org/content/groups/flexgroup/</url>
+        </repository>
+        <repository>
+            <id>oss.sonatype.org</id>
+            <name>oss.sonatype.org</name>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
 
         <!-- our -->
@@ -204,23 +209,23 @@
 
     <build>
         <finalName>${project.name}</finalName>
-        
-		<sourceDirectory>src/main/as3/</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>src/main/resources/</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-		
+        <sourceDirectory>src/main/as3/</sourceDirectory>
         <testSourceDirectory>src/test/as3/</testSourceDirectory>
+
         <testResources>
             <testResource>
                 <directory>src/test/resources/</directory>
                 <filtering>true</filtering>
             </testResource>
         </testResources>
-		
+
+        <resources>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
         <plugins>
 	        <plugin>
 		        <groupId>com.mycila</groupId>
