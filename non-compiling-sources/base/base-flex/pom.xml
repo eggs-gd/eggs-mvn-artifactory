@@ -1,0 +1,55 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>base-flex</artifactId>
+    <name>base-flex</name>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+	<parent>
+		<groupId>gd.eggs.as3</groupId>
+		<artifactId>base-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+    <repositories>
+        <!-- our -->
+        <repository>
+            <id>eggsgd.cloudbees.release</id>
+            <name>eggsgd.cloudbees.release</name>
+            <url>https://repository-eggsgd.forge.cloudbees.com/release/</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>eggsgd.cloudbees.snapshot</id>
+            <name>eggsgd.cloudbees.snapshot</name>
+            <url>https://repository-eggsgd.forge.cloudbees.com/snapshot/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
+
+    <build>
+        <sourceDirectory>src/main/flex/</sourceDirectory>
+        <testSourceDirectory>src/test/flex/</testSourceDirectory>
+
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.flexmojos</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+                <version>${flexmojos.version}</version>
+                <extensions>true</extensions>
+
+                <configuration>
+                    <storepass/>
+                    <sourceFile>${project.name}.mxml</sourceFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

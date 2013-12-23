@@ -1,0 +1,148 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>base-as3-site</artifactId>
+    <name>base-as3-site</name>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+	<parent>
+		<groupId>gd.eggs.as3</groupId>
+		<artifactId>base-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<inceptionYear>2013</inceptionYear>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+	</licenses>
+	<organization>
+        <name>earwiGGames</name>
+        <url>http://eggs.gd</url>
+	</organization>
+	<developers>
+        <developer>
+            <name>Dukobpa3</name>
+        </developer>
+	</developers>
+	
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <flexmojos.version>4.2-beta</flexmojos.version>
+        <flex.version>4.6.b.23201</flex.version>
+        <flashplayer.version>11.1</flashplayer.version>
+    </properties>
+
+    <repositories>
+        <!-- our -->
+        <repository>
+            <id>eggsgd.cloudbees.release</id>
+            <name>eggsgd.cloudbees.release</name>
+            <url>https://repository-eggsgd.forge.cloudbees.com/release/</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>eggsgd.cloudbees.snapshot</id>
+            <name>eggsgd.cloudbees.snapshot</name>
+            <url>https://repository-eggsgd.forge.cloudbees.com/snapshot/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>FlexPMD repository on opensource.adobe.com release</id>
+            <name>FlexPMD repository on opensource.adobe.com release</name>
+            <url>http://opensource.adobe.com/svn/opensource/flexpmd/maven-repository/release/</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <sourceDirectory>src/main/as3/</sourceDirectory>
+        <testSourceDirectory>src/test/as3/</testSourceDirectory>
+
+        <plugins>
+	        <plugin>
+		        <groupId>com.mycila</groupId>
+		        <artifactId>license-maven-plugin</artifactId>
+		        <version>2.5</version>
+		        <configuration>
+			        <header>${basedir}/LICENSE.txt</header>
+			        <includes>
+				        <include>src/main/as3/**</include>
+				        <include>src/test/as3/**</include>
+			        </includes>
+					<failIfMissing>false</failIfMissing>
+		        </configuration>
+		        <executions>
+			        <execution>
+				        <id>license-update</id>
+				        <phase>validate</phase>
+				        <goals>
+					        <goal>check</goal>
+				        </goals>
+			        </execution>
+		        </executions>
+	        </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.flexmojos</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+                <version>${flexmojos.version}</version>
+                <extensions>true</extensions>
+
+                <configuration>
+                    <storepass/>
+                    <sourceFile>${project.name}.as</sourceFile>
+                    <coverageOutputDirectory>${basedir}/target/site/</coverageOutputDirectory>
+	                <coverage>true</coverage>
+                </configuration>
+	            <executions>
+		            <execution>
+			            <id>asdoc-report</id>
+			            <phase>pre-site</phase>
+			            <goals>
+				            <goal>asdoc-report</goal>
+			            </goals>
+		            </execution>
+		            <execution>
+			            <id>coverage-report</id>
+			            <phase>pre-site</phase>
+			            <goals>
+				            <goal>coverage-report</goal>
+			            </goals>
+		            </execution>
+	            </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.adobe.ac</groupId>
+                <artifactId>flex-pmd-maven-plugin</artifactId>
+                <version>1.2</version>
+	            <configuration>
+		            <outputDirectory>${basedir}/target/site/pmd/</outputDirectory>
+	            </configuration>
+                <executions>
+                    <execution>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
