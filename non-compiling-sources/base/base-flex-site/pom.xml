@@ -9,11 +9,11 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-	<parent>
-		<groupId>gd.eggs.as3</groupId>
-		<artifactId>base-parent</artifactId>
-		<version>1.0.0</version>
-	</parent>
+    <parent>
+        <groupId>gd.eggs.as3</groupId>
+        <artifactId>base-flex</artifactId>
+        <version>1.0.0</version>
+    </parent>
 
 	<inceptionYear>2013</inceptionYear>
     <licenses>
@@ -62,10 +62,7 @@
     </pluginRepositories>
 
     <build>
-        <sourceDirectory>src/main/flex/</sourceDirectory>
-        <testSourceDirectory>src/test/flex/</testSourceDirectory>
-
-        <plugins>
+       <plugins>
 	        <plugin>
 		        <groupId>com.mycila</groupId>
 		        <artifactId>license-maven-plugin</artifactId>
@@ -97,7 +94,6 @@
 
                 <configuration>
                     <storepass/>
-                    <sourceFile>${project.name}.mxml</sourceFile>
                     <coverageOutputDirectory>${basedir}/target/site/</coverageOutputDirectory>
 	                <coverage>true</coverage>
                 </configuration>

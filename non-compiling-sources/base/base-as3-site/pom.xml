@@ -10,9 +10,9 @@
     <packaging>pom</packaging>
 
 	<parent>
-		<groupId>gd.eggs.as3</groupId>
-		<artifactId>base-parent</artifactId>
-		<version>1.0.0</version>
+        <groupId>gd.eggs.as3</groupId>
+        <artifactId>base-as3</artifactId>
+        <version>1.0.0</version>
 	</parent>
 
 	<inceptionYear>2013</inceptionYear>
@@ -69,10 +69,7 @@
     </pluginRepositories>
 
     <build>
-        <sourceDirectory>src/main/as3/</sourceDirectory>
-        <testSourceDirectory>src/test/as3/</testSourceDirectory>
-
-        <plugins>
+       <plugins>
 	        <plugin>
 		        <groupId>com.mycila</groupId>
 		        <artifactId>license-maven-plugin</artifactId>
@@ -104,7 +101,6 @@
 
                 <configuration>
                     <storepass/>
-                    <sourceFile>${project.name}.as</sourceFile>
                     <coverageOutputDirectory>${basedir}/target/site/</coverageOutputDirectory>
 	                <coverage>true</coverage>
                 </configuration>
